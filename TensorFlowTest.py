@@ -48,6 +48,13 @@ while i < len(labels):
 
 history = model.fit(data, labels, validation_split=0.25, epochs=200, batch_size=128)
 
+plt.plot(history.history['acc'])
+plt.plot(history.history['val_acc'])
+plt.title('Model accuracy')
+plt.ylabel('Accuracy')
+plt.xlabel('Epoch')
+plt.legend(['Train', 'Test'], loc='upper left')
+plt.show()
 
 
 model.save_weights('sampleWeightsLargeTest.h5')
