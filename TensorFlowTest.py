@@ -58,6 +58,7 @@ plt.show()
 
 
 model.save_weights('sampleWeightsLargeTest.h5')
+
 model.save('testModel.h5')
 
 print(model.evaluate(x=testData, y=labels, batch_size=1))
