@@ -45,8 +45,11 @@ while i < len(labels):
 
 # Train the model, iterating on the data in batches of 32 samples
 
+while True:
+    history = model.fit(data, labels,  epochs=250, batch_size=128)
+    model.save_weights('sampleWeightsLargeTest.h5')
+    model.save('testModel.h5')
 
-history = model.fit(data, labels, validation_split=0.25, epochs=200, batch_size=128)
 
 plt.plot(history.history['acc'])
 plt.plot(history.history['val_acc'])
@@ -55,11 +58,6 @@ plt.ylabel('Accuracy')
 plt.xlabel('Epoch')
 plt.legend(['Train', 'Test'], loc='upper left')
 plt.show()
-
-
-model.save_weights('sampleWeightsLargeTest.h5')
-model.save('testModel.h5')
-
 
 
 print(model.evaluate(x=testData, y=labels, batch_size=1))
